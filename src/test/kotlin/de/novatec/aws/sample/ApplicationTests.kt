@@ -12,9 +12,10 @@ internal class ApplicationTests {
     private val testee = Application()
 
     @Test fun getGooglePlus() {
+        // Todo fix tests
         given { mockHttpClient.get("") } willReturn { Result("", emptyList()) }
 
-        val result = testee.handler(Input(year = 2018, quarter = 1))
+        val result = testee.handleRequest(year = 2018, quarter = 1))
 
         println(result)
     }
@@ -23,7 +24,7 @@ internal class ApplicationTests {
 
 //    @Test fun runThisLocally() {
 //        val input = Input(2017, 4)
-//        val result = testee.handler(input)
+//        val result = testee.handleRequest(input)
 //
 //        println(result)
 //    }
