@@ -4,6 +4,7 @@ open class GooglePlusAccessor {
     private val key = System.getenv("apiKey")
 
     internal fun get(nextPageToken: String): Result {
+        if(key == null) throw NullPointerException("missing ApiKey!")
         val nextPageStr: String = if (nextPageToken != "") {
             "&pageToken=$nextPageToken"
         } else {

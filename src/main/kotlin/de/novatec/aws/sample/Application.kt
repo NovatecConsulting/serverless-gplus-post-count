@@ -25,13 +25,14 @@ class Application {
                     r.published.isAfter(it.startDate) && r.published.isBefore(it.endDate)
                 }
                 if(q != null)
-                    q.postCount++ // = q.postCount.plus(1)
+                    q.postCount = q.postCount.plus(1)
             }
             nextPageToken = result.nextPageToken
         } while (!result.nextPageToken.isNullOrBlank())
         var resultStr = ""
         quarters.forEach {
-            resultStr += """googlePlus_posts{year="${it.startDate.year}",quarter="${((it.startDate.monthValue - 1) / 3) + 1}"} ${it.postCount.toDouble()} """
+            resultStr += """googlePlus_posts{year="${it.startDate.year}",quarter="${((it.startDate.monthValue - 1) / 3) + 1}"} ${it.postCount.toDouble()}
+"""
         }
         return resultStr
     }
